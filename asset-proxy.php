@@ -107,7 +107,7 @@ foreach ($raw_headers as $h) {
 }
 
 // set certain headers for the output 
-foreach (array('Content-Type','Content-Encoding') as $header) {
+foreach (array('Content-Type','Content-Encoding','Cache-Control','ETag','Last-Modified','Vary') as $header) {
 	if (isset($received_headers[$header])) {
 		header($header.': '.$received_headers[$header]);
 	}
