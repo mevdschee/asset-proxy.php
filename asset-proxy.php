@@ -12,6 +12,9 @@ $hostnames = array(
 // maximum age of a file before being refreshed 
 $refresh_age = 24*3600;
 
+// directory where the cache resides (should exist and not be served)
+$cache_dir = '/tmp/cache';
+
 // strip the leading "/proxy.php/" from the URL
 $url = substr($_SERVER['REQUEST_URI'], strlen($_SERVER['SCRIPT_NAME'].'/'));
 
@@ -31,7 +34,7 @@ if (!in_array($hostname, $hostnames)) {
 }
 
 // calculate the cached filename and check whether it already exists
-$filename = "cache/".md5($url);
+$filename = $cache_dir.'/'.md5($url);
 $file_exists = file_exists($filename);
 
 // get the file age if the file exists
